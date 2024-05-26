@@ -161,37 +161,44 @@
             <div class="row justify-content-center position-relative" style="margin-top: -200px; z-index: 1;">
                 <div class="col-lg-8">
                     <div class="bg-primary p-5 m-5 mb-0">
-                        <form method="post" action="mailto:akashalvii512@gmail.com">
+                        <form method="post">
                             <div class="row g-3">
                                 <div class="col-12 col-sm-6">
-                                    <input type="text" class="form-control bg-light border-0" placeholder="Your Name"
-                                        style="height: 55px;">
+                                    <label for="name" class="form-label">Your Name</label>
+                                    <input type="text" class="form-control bg-light border-0" name="name" id="name"
+                                        placeholder="Your Name" style="height: 55px;" required>
                                 </div>
                                 <div class="col-12 col-sm-6">
-                                    <input type="email" class="form-control bg-light border-0" placeholder="Your Email"
-                                        style="height: 55px;">
+                                    <label for="email" class="form-label">Your Email</label>
+                                    <input type="email" class="form-control bg-light border-0" name="email" id="email"
+                                        placeholder="Your Email" style="height: 55px;" required>
                                 </div>
                                 <div class="col-12">
-                                    <input type="text" class="form-control bg-light border-0" placeholder="Your Contact"
-                                        style="height: 55px;">
+                                    <label for="contact" class="form-label">Your Contact</label>
+                                    <input type="number" class="form-control bg-light border-0" name="number"
+                                        placeholder="Your Contact" style="height: 55px;">
                                 </div>
                                 <div class="col-12">
-                                    <input type="text" class="form-control bg-light border-0" placeholder="Your Address"
-                                        style="height: 55px;">
+                                    <label for="address" class="form-label">Your Address</label>
+                                    <input type="text" class="form-control bg-light border-0" name="address"
+                                        placeholder="Your Address" style="height: 55px;">
                                 </div>
                                 <div class="col-12">
-                                    <input type="text" class="form-control bg-light border-0"
-                                        placeholder="Service you want" style="height: 55px;">
+                                    <label for="service" class="form-label">Service you want</label>
+                                    <input type="text" class="form-control bg-light border-0" name="service"
+                                        id="service" placeholder="Service you want" style="height: 55px;" required>
                                 </div>
                                 <div class="col-12">
-                                    <textarea class="form-control bg-light border-0" rows="5"
-                                        placeholder="Message"></textarea>
+                                    <label for="message" class="form-label">Message</label>
+                                    <textarea class="form-control bg-light border-0" rows="5" name="message"
+                                        id="message" placeholder="Message"></textarea>
                                 </div>
                                 <div class="col-12">
                                     <button class="btn btn-secondary w-100 py-3" type="submit">Send Message</button>
                                 </div>
                             </div>
                         </form>
+
                     </div>
                 </div>
             </div>
@@ -300,7 +307,19 @@
     <script src="lib/easing/easing.min.js"></script>
     <script src="lib/waypoints/waypoints.min.js"></script>
     <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-
+    <script>
+        const form = document.querySelector('form');
+        const nameInput = document.getElementById('name');
+        const emailInput = document.getElementById('email');
+        const messageInput = document.getElementById('message');
+        const serviceInput = document.getElementById('service');
+        const numberInput = document.getElementById('number');
+        form.addEventListener('submit', (event) => {
+            event.preventDefault(); // Prevent default form submission
+            const mailtoLink = `mailto:akashalvii512@gmail.com?subject=Form%20Submission&body=Name:%20${nameInput.value}%0AEmail:%20${emailInput.value}%0AService:%20${serviceInput.value}%0A%0AMessage:%0A${messageInput.value}`;
+            window.location.href = mailtoLink; // Open mailto link in new tab
+        });
+    </script>
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
 </body>
